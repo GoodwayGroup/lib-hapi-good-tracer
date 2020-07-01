@@ -1,0 +1,90 @@
+{
+  "name": "@goodwaygroup/lib-hapi-trace-headers",
+  "version": "0.0.0",
+  "description": "Hapi plugin for injecting trace headers into requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test:jest -- --coverage",
+    "test:jest": "cross-env NODE_ENV=test jest ",
+    "test:watch": "npm run test:jest -- --watch",
+    "test:results": "open ./coverage/lcov-report/index.html",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "version": "git-chglog -o CHANGELOG.md --next-tag $(grep '\\\"version\\\":' package.json | grep -v git-chglog | awk -F '\\\"' '{print $4}') && git add CHANGELOG.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoodwayGroup/lib-hapi-trace-headers.git"
+  },
+  "author": "https://www.npmjs.com/~clok",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues"
+  },
+  "homepage": "https://github.com/GoodwayGroup/lib-hapi-trace-headers#readme",
+  "keywords": [
+    "hapi",
+    "metrics",
+    "plugin",
+    "request",
+    "trace",
+    "heaeders",
+    "instrumentation",
+    "monitoring"
+  ],
+  "pre-push": [
+    "lint",
+    "test"
+  ],
+  "jest": {
+    "clearMocks": true,
+    "coverageDirectory": "<rootDir>/coverage",
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "text-summary",
+      "json"
+    ],
+    "collectCoverageFrom": [
+      "lib/**/*.{js,jsx,mjs}",
+      "lib/index.js"
+    ],
+    "setupFiles": [],
+    "testMatch": [
+      "<rootDir>/spec/**/?(*.)(spec|test).{js,jsx,mjs}"
+    ],
+    "testEnvironment": "node",
+    "transform": {},
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
+    ],
+    "moduleNameMapper": {},
+    "modulePaths": [
+      "<rootDir>/lib"
+    ],
+    "moduleFileExtensions": [
+      "web.js",
+      "mjs",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
+    ]
+  },
+  "devDependencies": {
+    "@hapi/hapi": "^19.1.1",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.3.1",
+    "eslint-config-goodway": "^2.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.2.5",
+    "jest": "^26.1.0"
+  },
+  "dependencies": {
+    "@hapi/hoek": "^9.0.4",
+    "debug": "^4.1.1",
+    "lodash": "^4.17.15",
+    "uuid": "^8.2.0"
+  }
+}
