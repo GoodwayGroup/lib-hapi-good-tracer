@@ -20,7 +20,8 @@ In your `index.js` for the Hapi server, register the plugin:
 await server.register({
     plugin: require('@goodwaygroup/lib-hapi-trace-headers'),
     options: {
-        // TODO: add docs for options
+        traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
+        traceSeqIDHeader: 'x-custom-trace-seqid' // optional defaults to 'x-gg-trace-seqid'
     }
 });
 ```
@@ -29,7 +30,8 @@ await server.register({
 
 > When passing a configuration option, it will overwrite the defaults.
 
-- TODO: add docs for options
+- `traceUUIDHeader`: defaults to 'x-gg-trace-uuid'. The header that is used for the Trace ID
+- `traceSeqIDHeader`: defaults to 'x-gg-trace-seqid' The header that is used for the Sequence ID
 
 
 ## Running Tests
