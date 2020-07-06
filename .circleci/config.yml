@@ -4,7 +4,7 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     -
-      image: circleci/node:8
+      image: circleci/node:12
 
 jobs:
   test:
@@ -16,7 +16,7 @@ jobs:
       -
         restore_cache:
           keys:
-            - v0-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-{{ checksum "package-lock.json" }}
 
       -
         run:
@@ -27,7 +27,7 @@ jobs:
         save_cache:
           paths:
             - node_modules
-          key: v0-dependencies-{{ checksum "package-lock.json" }}
+          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       # Run Tests!
       - run: npm test
