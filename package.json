@@ -73,6 +73,8 @@
     ]
   },
   "devDependencies": {
+    "@hapi/good": "^9.0.0",
+    "@hapi/good-squeeze": "^6.0.0",
     "@hapi/hapi": "^19.1.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.3.1",
