@@ -1,6 +1,6 @@
-# lib-hapi-trace-headers
+# lib-hapi-good-tracer
 
-[![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-trace-headers.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-trace-headers)
+[![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
 
 > Please do not run this plugin within tests in your application
 
@@ -11,7 +11,7 @@ This plugin will send metrics regarding route performance on every request to th
 For the `prefix`, please the name of the service that you are integrating with (neato-service, cool-api, etc)
 
 ```
-$ npm install -S @goodwaygroup/lib-hapi-trace-headers
+$ npm install -S @goodwaygroup/lib-hapi-good-tracer
 ```
 
 In your `index.js` for the Hapi server, register the plugin:
@@ -77,7 +77,7 @@ To run tests, just run the following:
 npm test
 ```
 
-All commits are tested on [CircleCI](https://circleci.com/gh/GoodwayGroup/workflows/lib-hapi-trace-headers)
+All commits are tested on [CircleCI](https://circleci.com/gh/GoodwayGroup/workflows/lib-hapi-good-tracer)
 
 ## Linting
 
@@ -99,7 +99,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use milestones and `npm` version to bump versions. We also employ [git-chglog](https://github.com/git-chglog/git-chglog) to manage the [CHANGELOG.md](CHANGELOG.md). For the versions available, see the [tags on this repository](https://github.com/GoodwayGroup/lib-hapi-trace-headers/tags).
+We use milestones and `npm` version to bump versions. We also employ [git-chglog](https://github.com/git-chglog/git-chglog) to manage the [CHANGELOG.md](CHANGELOG.md). For the versions available, see the [tags on this repository](https://github.com/GoodwayGroup/lib-hapi-good-tracer/tags).
 
 To initiate a version change:
 
@@ -111,7 +111,7 @@ npm version minor
 
 * **Derek Smith** - *Initial work* - [@clok](https://github.com/clok)
 
-See also the list of [contributors](https://github.com/GoodwayGroup/lib-hapi-trace-headers/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/GoodwayGroup/lib-hapi-good-tracer/contributors) who participated in this project.
 
 ## License
 
