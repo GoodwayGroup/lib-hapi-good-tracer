@@ -18,10 +18,40 @@ In your `index.js` for the Hapi server, register the plugin:
 
 ```js
 await server.register({
-    plugin: require('@goodwaygroup/lib-hapi-trace-headers'),
+    plugin: require('@goodwaygroup/lib-hapi-good-tracer'),
     options: {
         traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
-        traceSeqIDHeader: 'x-custom-trace-seqid' // optional defaults to 'x-gg-trace-seqid'
+        traceSeqIDHeader: 'x-custom-trace-seqid', // optional defaults to 'x-gg-trace-seqid'
+        cache: {
+            ttl: 10 // 10 seconds
+        }
+    }
+});
+
+// add stream to Good log reporters
+const logReporters = {
+    console: [
+        server.plugins.goodTracer.GoodSourceTracer, // Stream Transform that will inject the tracer object
+        {
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{
+                response: { exclude: 'healthcheck' },
+                log: '*',
+                request: '*',
+                error: '*',
+                ops: '*'
+            }]
+        }, {
+            module: 'good-squeeze',
+            name: 'SafeJson'
+        }, 'stdout']
+};
+
+await server.register({
+    plugin: Good,
+    options: {
+        reporters: logReporters
     }
 });
 ```
@@ -32,7 +62,12 @@ await server.register({
 
 - `traceUUIDHeader`: defaults to 'x-gg-trace-uuid'. The header that is used for the Trace ID
 - `traceSeqIDHeader`: defaults to 'x-gg-trace-seqid' The header that is used for the Sequence ID
-
+- `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
+    - `ttl`: default 120 seconds
+    - `checkPeriod`: default 5 minutes
+    - `maxKeys`: default `5000`
+    - `useClones`: default `false`
+    - `extendTTLOnGet`: This feature will reset the TTL to the global TTL when a successful `get` occurs. This will extend the life of an item in the cache as a result. default `true`
 
 ## Running Tests
 
