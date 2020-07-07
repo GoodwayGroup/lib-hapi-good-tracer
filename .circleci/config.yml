@@ -1,4 +1,6 @@
-version: 2
+version: 2.1
+orbs:
+  coveralls: coveralls/coveralls@1.0.6
 
 defaults: &defaults
   working_directory: ~/repo
@@ -33,9 +35,11 @@ jobs:
       - run: npm test
 
       # Upload to CodeCov
-#      - run:
-#          name: 'Upload to codecov.io'
-#          command: bash <(curl -s https://codecov.io/bash) -t <>
+      # - run:
+      #     name: 'Upload to codecov.io'
+      #     command: bash <(curl -s https://codecov.io/bash) -t <>
+
+      - coveralls/upload
 
       - store_artifacts:
           path: ./coverage
