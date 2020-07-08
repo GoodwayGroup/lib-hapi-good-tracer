@@ -2,13 +2,9 @@
 
 [![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
 
-> Please do not run this plugin within tests in your application
-
 ## Usage
 
-This plugin will send metrics regarding route performance on every request to the Hapi server.
-
-For the `prefix`, please the name of the service that you are integrating with (neato-service, cool-api, etc)
+This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an `inject` object.
 
 ```
 $ npm install -S @goodwaygroup/lib-hapi-good-tracer
@@ -23,7 +19,7 @@ await server.register({
         traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
         traceSeqIDHeader: 'x-custom-trace-seqid', // optional defaults to 'x-gg-trace-seqid'
         cache: {
-            ttl: 10 // 10 seconds
+            ttl: 60 // optional defaults to 120 seconds
         }
     }
 });
@@ -55,6 +51,14 @@ await server.register({
     }
 });
 ```
+
+This plugin uses an in-memory cache that is used to pass the `tracer` information between the server, request and logger.
+
+There is a global TTL per object that is reset on each `get` of the object. 
+
+If an object is stale for the length of the TTL, it will be culled. 
+
+There is a max number of keys that can be active at any time to help with memory concerns.
 
 ## Configuration Options
 
