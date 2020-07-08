@@ -32,10 +32,12 @@
     "instrumentation",
     "monitoring"
   ],
-  "pre-push": [
-    "lint",
-    "test"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm test"
+    }
+  },
   "jest": {
     "clearMocks": true,
     "coverageDirectory": "<rootDir>/coverage",
