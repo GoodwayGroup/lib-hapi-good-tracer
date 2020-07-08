@@ -1,6 +1,6 @@
 # lib-hapi-good-tracer
 
-[![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
+[![Coverage Status](https://coveralls.io/repos/github/GoodwayGroup/lib-hapi-good-tracer/badge.svg?branch=master)](https://coveralls.io/github/GoodwayGroup/lib-hapi-good-tracer?branch=master) [![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
 
 ## Usage
 
@@ -52,6 +52,8 @@ await server.register({
 });
 ```
 
+## In-Memory Cache
+
 This plugin uses an in-memory cache that is used to pass the `tracer` information between the server, request and logger.
 
 There is a global TTL per object that is reset on each `get` of the object. 
@@ -59,6 +61,8 @@ There is a global TTL per object that is reset on each `get` of the object.
 If an object is stale for the length of the TTL, it will be culled. 
 
 There is a max number of keys that can be active at any time to help with memory concerns.
+
+See [node-cache](https://github.com/node-cache/node-cache) for available settings.
 
 ## Configuration Options
 
