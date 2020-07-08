@@ -1,4 +1,5 @@
 const Hapi = require('@hapi/hapi');
+const Good = require('@hapi/good');
 const plugin = require('../lib');
 
 describe('good-tracer options', () => {
@@ -15,11 +16,25 @@ describe('good-tracer options', () => {
             method: 'GET', path: '/', handler: get, config: { cors: true }
         });
 
-        return server.register({
+        await server.register({
             plugin,
             options: {
                 traceUUIDHeader: 'x-custom-trace-uuid',
                 traceSeqIDHeader: 'x-custom-trace-seqid',
+                cache: {
+                    extendTTLOnGet: false
+                }
+            }
+        });
+
+        await server.register({
+            plugin: Good,
+            options: {
+                reporters: {
+                    console: [
+                        server.plugins.goodTracer.GoodTracerStream
+                    ]
+                }
             }
         });
     });

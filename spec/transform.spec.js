@@ -3,6 +3,12 @@ const Hapi = require('@hapi/hapi');
 const Good = require('@hapi/good');
 const plugin = require('../lib');
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
 describe('good-tracer log reporter stream', () => {
     let server;
     let logLines = [];
@@ -84,6 +90,9 @@ describe('good-tracer log reporter stream', () => {
             plugin: Good,
             options: {
                 reporters: logReporters,
+                ops: {
+                    interval: 900
+                },
                 includes: {
                     request: ['headers'],
                     response: ['headers']
@@ -111,7 +120,7 @@ describe('good-tracer log reporter stream', () => {
     });
 
     describe('general logging', () => {
-        it('default', async () => {
+        it('should inject the tracer object into log events', async () => {
             await server.inject('/');
             expect(logLines.length).toBe(1);
             const l1 = JSON.parse(logLines[0]);
@@ -142,7 +151,7 @@ describe('good-tracer log reporter stream', () => {
     });
 
     describe('error logging', () => {
-        it('default', async () => {
+        it('should inject the tracer object into log events', async () => {
             await server.inject('/error');
 
             expect(logLines.length).toBe(2);
@@ -195,7 +204,7 @@ describe('good-tracer log reporter stream', () => {
     });
 
     describe('request.log', () => {
-        it('custom trace headers', async () => {
+        it('should inject the tracer object into log events', async () => {
             await server.inject('/log');
 
             expect(logLines.length).toBe(2);
@@ -213,6 +222,31 @@ describe('good-tracer log reporter stream', () => {
 
             expect(stats).toEqual({
                 error: 0, response: 1, request: 1, ops: 0
+            });
+        });
+    });
+
+    describe('Good ops log', () => {
+        it('should not manipulate the ops log events', async () => {
+            await server.start();
+
+            await sleep(1000);
+
+            await server.stop();
+
+            expect(logLines.length).toBe(1);
+            const stats = logLines.reduce((prev, line) => {
+                const parsed = JSON.parse(line);
+                expect(parsed.tracer).not.toBeDefined();
+
+                prev[parsed.event] += 1;
+                return prev;
+            }, {
+                error: 0, response: 0, request: 0, ops: 0
+            });
+
+            expect(stats).toEqual({
+                error: 0, response: 0, request: 0, ops: 1
             });
         });
     });
