@@ -68,8 +68,11 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 
 > When passing a configuration option, it will overwrite the defaults.
 
-- `traceUUIDHeader`: defaults to 'x-gg-trace-uuid'. The header that is used for the Trace ID
-- `traceSeqIDHeader`: defaults to 'x-gg-trace-seqid' The header that is used for the Sequence ID
+- `traceUUIDHeader`: defaults to `x-gg-trace-uuid`. The header that is used for the Trace ID
+- `traceSeqIDHeader`: defaults to `x-gg-trace-seqid`. The header that is used for the Sequence ID
+- `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
+- `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
+    - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
 - `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
     - `ttl`: default 120 seconds
     - `checkPeriod`: default 5 minutes

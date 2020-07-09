@@ -70,4 +70,9 @@ describe('good-tracer plugin', () => {
         expect(result.headers['x-gg-trace-seqid']).toBeDefined();
         expect(result.headers['x-gg-trace-seqid']).toBe('not a number');
     });
+
+    it('should not publish a stats route', async () => {
+        const result = await server.inject('/good-tracer/stats');
+        expect(result.statusCode).toBe(404);
+    });
 });
