@@ -1,38 +1,86 @@
-# lib-hapi-trace-headers
+# lib-hapi-good-tracer
 
-[![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-trace-headers.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-trace-headers)
-
-> Please do not run this plugin within tests in your application
+[![Coverage Status](https://coveralls.io/repos/github/GoodwayGroup/lib-hapi-good-tracer/badge.svg?branch=master)](https://coveralls.io/github/GoodwayGroup/lib-hapi-good-tracer?branch=master) [![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
 
 ## Usage
 
-This plugin will send metrics regarding route performance on every request to the Hapi server.
-
-For the `prefix`, please the name of the service that you are integrating with (neato-service, cool-api, etc)
+This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an `inject` object.
 
 ```
-$ npm install -S @goodwaygroup/lib-hapi-trace-headers
+$ npm install -S @goodwaygroup/lib-hapi-good-tracer
 ```
 
 In your `index.js` for the Hapi server, register the plugin:
 
 ```js
 await server.register({
-    plugin: require('@goodwaygroup/lib-hapi-trace-headers'),
+    plugin: require('@goodwaygroup/lib-hapi-good-tracer'),
     options: {
         traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
-        traceSeqIDHeader: 'x-custom-trace-seqid' // optional defaults to 'x-gg-trace-seqid'
+        traceSeqIDHeader: 'x-custom-trace-seqid', // optional defaults to 'x-gg-trace-seqid'
+        enableStatsRoute: true, // optional defaults to false
+        baseRoute: '/debug', // optional defaults to ''
+        cache: {
+            ttl: 60 // optional defaults to 120 seconds
+        }
+    }
+});
+
+// add stream to Good log reporters
+const logReporters = {
+    console: [
+        server.plugins.goodTracer.GoodSourceTracer, // Stream Transform that will inject the tracer object
+        {
+            module: 'good-squeeze',
+            name: 'Squeeze',
+            args: [{
+                response: { exclude: 'healthcheck' },
+                log: '*',
+                request: '*',
+                error: '*',
+                ops: '*'
+            }]
+        }, {
+            module: 'good-squeeze',
+            name: 'SafeJson'
+        }, 'stdout']
+};
+
+await server.register({
+    plugin: Good,
+    options: {
+        reporters: logReporters
     }
 });
 ```
+
+## In-Memory Cache
+
+This plugin uses an in-memory cache that is used to pass the `tracer` information between the server, request and logger.
+
+There is a global TTL per object that is reset on each `get` of the object. 
+
+If an object is stale for the length of the TTL, it will be culled. 
+
+There is a max number of keys that can be active at any time to help with memory concerns.
+
+See [node-cache](https://github.com/node-cache/node-cache) for available settings.
 
 ## Configuration Options
 
 > When passing a configuration option, it will overwrite the defaults.
 
-- `traceUUIDHeader`: defaults to 'x-gg-trace-uuid'. The header that is used for the Trace ID
-- `traceSeqIDHeader`: defaults to 'x-gg-trace-seqid' The header that is used for the Sequence ID
-
+- `traceUUIDHeader`: defaults to `x-gg-trace-uuid`. The header that is used for the Trace ID
+- `traceSeqIDHeader`: defaults to `x-gg-trace-seqid`. The header that is used for the Sequence ID
+- `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
+- `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
+    - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
+- `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
+    - `ttl`: default 120 seconds
+    - `checkPeriod`: default 5 minutes
+    - `maxKeys`: default `5000`
+    - `useClones`: default `false`
+    - `extendTTLOnGet`: This feature will reset the TTL to the global TTL when a successful `get` occurs. This will extend the life of an item in the cache as a result. default `true`
 
 ## Running Tests
 
@@ -42,7 +90,7 @@ To run tests, just run the following:
 npm test
 ```
 
-All commits are tested on [CircleCI](https://circleci.com/gh/GoodwayGroup/workflows/lib-hapi-trace-headers)
+All commits are tested on [CircleCI](https://circleci.com/gh/GoodwayGroup/workflows/lib-hapi-good-tracer)
 
 ## Linting
 
@@ -64,7 +112,7 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Versioning
 
-We use milestones and `npm` version to bump versions. We also employ [git-chglog](https://github.com/git-chglog/git-chglog) to manage the [CHANGELOG.md](CHANGELOG.md). For the versions available, see the [tags on this repository](https://github.com/GoodwayGroup/lib-hapi-trace-headers/tags).
+We use milestones and `npm` version to bump versions. We also employ [git-chglog](https://github.com/git-chglog/git-chglog) to manage the [CHANGELOG.md](CHANGELOG.md). For the versions available, see the [tags on this repository](https://github.com/GoodwayGroup/lib-hapi-good-tracer/tags).
 
 To initiate a version change:
 
@@ -76,7 +124,7 @@ npm version minor
 
 * **Derek Smith** - *Initial work* - [@clok](https://github.com/clok)
 
-See also the list of [contributors](https://github.com/GoodwayGroup/lib-hapi-trace-headers/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/GoodwayGroup/lib-hapi-good-tracer/contributors) who participated in this project.
 
 ## License
 

@@ -1,7 +1,7 @@
 {
-  "name": "@goodwaygroup/lib-hapi-trace-headers",
+  "name": "@goodwaygroup/lib-hapi-good-tracer",
   "version": "0.0.0",
-  "description": "Hapi plugin for injecting trace headers into requests",
+  "description": "Hapi plugin for injecting tracer info into response headers and logs",
   "main": "index.js",
   "scripts": {
     "test": "npm run test:jest -- --coverage",
@@ -32,10 +32,12 @@
     "instrumentation",
     "monitoring"
   ],
-  "pre-push": [
-    "lint",
-    "test"
-  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint && npm test"
+    }
+  },
   "jest": {
     "clearMocks": true,
     "coverageDirectory": "<rootDir>/coverage",
@@ -73,6 +75,8 @@
     ]
   },
   "devDependencies": {
+    "@hapi/good": "^9.0.0",
+    "@hapi/good-squeeze": "^6.0.0",
     "@hapi/hapi": "^19.1.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.3.1",
@@ -85,6 +89,7 @@
     "@hapi/hoek": "^9.0.4",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
+    "node-cache": "^5.1.2",
     "uuid": "^8.2.0"
   }
 }

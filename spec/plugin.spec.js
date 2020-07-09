@@ -2,7 +2,7 @@ const Hapi = require('@hapi/hapi');
 const { set } = require('lodash');
 const plugin = require('../lib');
 
-describe('hapi-trace-headers plugin', () => {
+describe('good-tracer plugin', () => {
     let server;
 
     beforeEach(async () => {
@@ -70,58 +70,9 @@ describe('hapi-trace-headers plugin', () => {
         expect(result.headers['x-gg-trace-seqid']).toBeDefined();
         expect(result.headers['x-gg-trace-seqid']).toBe('not a number');
     });
-});
 
-describe('hapi-trace-headers options', () => {
-    let server;
-
-    beforeEach(async () => {
-        server = new Hapi.Server({
-            host: 'localhost',
-            port: 8085
-        });
-
-        const get = () => 'Success!';
-        server.route({
-            method: 'GET', path: '/', handler: get, config: { cors: true }
-        });
-
-        return server.register({
-            plugin,
-            options: {
-                traceUUIDHeader: 'x-custom-trace-uuid',
-                traceSeqIDHeader: 'x-custom-trace-seqid',
-            }
-        });
-    });
-
-    describe('custom header keys', () => {
-        it('custom trace headers', async () => {
-            const result = await server.inject('/');
-            expect(result.headers['x-gg-trace-uuid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-uuid']).toBeDefined();
-            expect(result.headers['x-custom-trace-uuid']).toMatch(/\w+-\w+-\w+-\w+-\w+/);
-            expect(result.headers['x-gg-trace-seqid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBe(0);
-        });
-
-        it('custom trace headers w/ values', async () => {
-            const options = {
-                method: 'GET',
-                url: '/',
-                headers: {
-                    'x-custom-trace-uuid': 'aCoolValue1234',
-                    'x-custom-trace-seqid': 110
-                }
-            };
-
-            const result = await server.inject(options);
-            expect(result.headers['x-gg-trace-uuid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-uuid']).toBeDefined();
-            expect(result.headers['x-gg-trace-seqid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBe(111);
-        });
+    it('should not publish a stats route', async () => {
+        const result = await server.inject('/good-tracer/stats');
+        expect(result.statusCode).toBe(404);
     });
 });
