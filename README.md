@@ -18,6 +18,7 @@ await server.register({
     options: {
         traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
         traceSeqIDHeader: 'x-custom-trace-seqid', // optional defaults to 'x-gg-trace-seqid'
+        enableStatsRoute: true, // optional defaults to false
         cache: {
             ttl: 60 // optional defaults to 120 seconds
         }
