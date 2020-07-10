@@ -23,8 +23,8 @@ describe('good-tracer plugin', () => {
 
     describe.each([
         { desc: 'no headers passed', expectedId: 0 },
-        { desc: 'seqId header passed', passedId: 0, expectedId: 1 },
-        { desc: 'seqId header passed', passedId: '1336', expectedId: 1337 },
+        { desc: 'depth header passed', passedId: 0, expectedId: 1 },
+        { desc: 'depth header passed', passedId: '1336', expectedId: 1337 },
         { desc: 'trace header passed', expectedId: 0, passedTrace: 'iCanBeANYTHING' },
     ])('general use cases', ({
         desc, expectedId, passedId, passedTrace
@@ -36,7 +36,7 @@ describe('good-tracer plugin', () => {
             };
 
             if (passedId !== undefined) {
-                set(options, 'headers.x-gg-trace-seqid', passedId);
+                set(options, 'headers.x-gg-trace-depth', passedId);
             }
 
             if (passedTrace !== undefined) {
@@ -50,25 +50,25 @@ describe('good-tracer plugin', () => {
             } else {
                 expect(result.headers['x-gg-trace-uuid']).toMatch(/\w+-\w+-\w+-\w+-\w+/);
             }
-            expect(result.headers['x-gg-trace-seqid']).toBeDefined();
-            expect(result.headers['x-gg-trace-seqid']).toBe(expectedId);
+            expect(result.headers['x-gg-trace-depth']).toBeDefined();
+            expect(result.headers['x-gg-trace-depth']).toBe(expectedId);
         });
     });
 
-    it('should not error or modify when a non-number is passed for a seqId', async () => {
+    it('should not error or modify when a non-number is passed for a depth', async () => {
         const options = {
             method: 'GET',
             url: '/',
             headers: {
-                'x-gg-trace-seqid': 'not a number'
+                'x-gg-trace-depth': 'not a number'
             }
         };
 
         const result = await server.inject(options);
         expect(result.headers['x-gg-trace-uuid']).toBeDefined();
         expect(result.headers['x-gg-trace-uuid']).toMatch(/\w+-\w+-\w+-\w+-\w+/);
-        expect(result.headers['x-gg-trace-seqid']).toBeDefined();
-        expect(result.headers['x-gg-trace-seqid']).toBe('not a number');
+        expect(result.headers['x-gg-trace-depth']).toBeDefined();
+        expect(result.headers['x-gg-trace-depth']).toBe('not a number');
     });
 
     it('should not publish a stats route', async () => {

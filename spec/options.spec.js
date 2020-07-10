@@ -21,7 +21,7 @@ describe('good-tracer options', () => {
                 plugin,
                 options: {
                     traceUUIDHeader: 'x-custom-trace-uuid',
-                    traceSeqIDHeader: 'x-custom-trace-seqid',
+                    traceDepthHeader: 'x-custom-trace-depth',
                     baseRoute: '/test-service',
                     cache: {
                         extendTTLOnGet: false
@@ -46,9 +46,9 @@ describe('good-tracer options', () => {
             expect(result.headers['x-gg-trace-uuid']).not.toBeDefined();
             expect(result.headers['x-custom-trace-uuid']).toBeDefined();
             expect(result.headers['x-custom-trace-uuid']).toMatch(/\w+-\w+-\w+-\w+-\w+/);
-            expect(result.headers['x-gg-trace-seqid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBe(0);
+            expect(result.headers['x-gg-trace-depth']).not.toBeDefined();
+            expect(result.headers['x-custom-trace-depth']).toBeDefined();
+            expect(result.headers['x-custom-trace-depth']).toBe(0);
         });
 
         it('custom trace headers w/ values', async () => {
@@ -57,16 +57,16 @@ describe('good-tracer options', () => {
                 url: '/',
                 headers: {
                     'x-custom-trace-uuid': 'aCoolValue1234',
-                    'x-custom-trace-seqid': 110
+                    'x-custom-trace-depth': 110
                 }
             };
 
             const result = await server.inject(options);
             expect(result.headers['x-gg-trace-uuid']).not.toBeDefined();
             expect(result.headers['x-custom-trace-uuid']).toBeDefined();
-            expect(result.headers['x-gg-trace-seqid']).not.toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBeDefined();
-            expect(result.headers['x-custom-trace-seqid']).toBe(111);
+            expect(result.headers['x-gg-trace-depth']).not.toBeDefined();
+            expect(result.headers['x-custom-trace-depth']).toBeDefined();
+            expect(result.headers['x-custom-trace-depth']).toBe(111);
         });
     });
 

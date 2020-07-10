@@ -101,12 +101,12 @@ describe('good-tracer log reporter stream', () => {
         });
     });
 
-    it('should not error or modify when a non-number is passed for a seqId', async () => {
+    it('should not error or modify when a non-number is passed for a depth', async () => {
         const options = {
             method: 'GET',
             url: '/',
             headers: {
-                'x-gg-trace-seqid': 'not a number'
+                'x-gg-trace-depth': 'not a number'
             }
         };
 
@@ -116,7 +116,7 @@ describe('good-tracer log reporter stream', () => {
         expect(l1.event).toBe('response');
         expect(l1.tracer).toBeDefined();
         expect(l1.tracer.uuid).toBeDefined();
-        expect(l1.tracer.seq).toBe('not a number');
+        expect(l1.tracer.depth).toBe('not a number');
     });
 
     describe('general logging', () => {
@@ -127,7 +127,7 @@ describe('good-tracer log reporter stream', () => {
             expect(l1.event).toBe('response');
             expect(l1.tracer).toBeDefined();
             expect(l1.tracer.uuid).toBeDefined();
-            expect(l1.tracer.seq).toBe(0);
+            expect(l1.tracer.depth).toBe(0);
         });
 
         it('custom trace headers w/ values', async () => {
@@ -136,7 +136,7 @@ describe('good-tracer log reporter stream', () => {
                 url: '/',
                 headers: {
                     'x-gg-trace-uuid': 'aCoolValue1234',
-                    'x-gg-trace-seqid': 110
+                    'x-gg-trace-depth': 110
                 }
             };
 
@@ -146,7 +146,7 @@ describe('good-tracer log reporter stream', () => {
             expect(l1.event).toBe('response');
             expect(l1.tracer).toBeDefined();
             expect(l1.tracer.uuid).toBe('aCoolValue1234');
-            expect(l1.tracer.seq).toBe(111);
+            expect(l1.tracer.depth).toBe(111);
         });
     });
 
@@ -159,7 +159,7 @@ describe('good-tracer log reporter stream', () => {
                 const parsed = JSON.parse(line);
                 expect(parsed.tracer).toBeDefined();
                 expect(parsed.tracer.uuid).toBeDefined();
-                expect(parsed.tracer.seq).toBe(0);
+                expect(parsed.tracer.depth).toBe(0);
 
                 prev[parsed.event] += 1;
                 return prev;
@@ -178,7 +178,7 @@ describe('good-tracer log reporter stream', () => {
                 url: '/error',
                 headers: {
                     'x-gg-trace-uuid': 'aCoolValue1234',
-                    'x-gg-trace-seqid': 110
+                    'x-gg-trace-depth': 110
                 }
             };
 
@@ -189,7 +189,7 @@ describe('good-tracer log reporter stream', () => {
                 const parsed = JSON.parse(line);
                 expect(parsed.tracer).toBeDefined();
                 expect(parsed.tracer.uuid).toBe('aCoolValue1234');
-                expect(parsed.tracer.seq).toBe(111);
+                expect(parsed.tracer.depth).toBe(111);
 
                 prev[parsed.event] += 1;
                 return prev;
@@ -212,7 +212,7 @@ describe('good-tracer log reporter stream', () => {
                 const parsed = JSON.parse(line);
                 expect(parsed.tracer).toBeDefined();
                 expect(parsed.tracer.uuid).toBeDefined();
-                expect(parsed.tracer.seq).toBe(0);
+                expect(parsed.tracer.depth).toBe(0);
 
                 prev[parsed.event] += 1;
                 return prev;
