@@ -4,7 +4,20 @@
 
 ## Usage
 
-This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an `inject` object.
+This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an injected `tracer` object. 
+
+```json
+{
+  "tracer": {
+    "uuid": "STRING",
+    "depth": "INTEGER"
+  }
+}
+```
+
+The `depth` value provides insight into the hierarchy chain of requests. Combining the `uuid` + `depth` + `timestamp` of a request will provide a mapping to the request chain.
+
+> NOTE: This module uses the [`debug`](https://www.npmjs.com/package/debug) logging tool. Use `DEBUG=hapi:plugins:good-tracer` to view debug logging.
 
 ```
 $ npm install -S @goodwaygroup/lib-hapi-good-tracer
@@ -17,7 +30,7 @@ await server.register({
     plugin: require('@goodwaygroup/lib-hapi-good-tracer'),
     options: {
         traceUUIDHeader: 'x-custom-trace-uuid', // optional defaults to 'x-gg-trace-uuid'
-        traceSeqIDHeader: 'x-custom-trace-seqid', // optional defaults to 'x-gg-trace-seqid'
+        traceDepthHeader: 'x-custom-trace-depth', // optional defaults to 'x-gg-trace-depth'
         enableStatsRoute: true, // optional defaults to false
         baseRoute: '/debug', // optional defaults to ''
         cache: {
@@ -71,7 +84,7 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 > When passing a configuration option, it will overwrite the defaults.
 
 - `traceUUIDHeader`: defaults to `x-gg-trace-uuid`. The header that is used for the Trace ID
-- `traceSeqIDHeader`: defaults to `x-gg-trace-seqid`. The header that is used for the Sequence ID
+- `traceDepthHeader`: defaults to `x-gg-trace-depth`. The header that is used for the Depth ID
 - `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
 - `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
     - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
