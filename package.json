@@ -83,7 +83,8 @@
     "eslint-config-goodway": "^2.1.1",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "nock": "^13.0.2"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.0",
