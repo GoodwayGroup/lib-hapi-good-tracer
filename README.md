@@ -4,7 +4,7 @@
 
 ## Usage
 
-This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an injected `tracer` object. 
+This plugin will read, generate and track a tracer header on `request`s that is then injected into the `Good` log stream via an injected `tracer` object.
 
 ```json
 {
@@ -67,13 +67,21 @@ await server.register({
 });
 ```
 
+## Request Chain Hierarchy
+
+Consider The following request chain:
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtTZXJ2aWNlIEFdIC0tPiB8UmVxdWVzdCAxIGRlcHRoIDB8IEJbU2VydmljZSBCXVxuXHRCIC0tPiB8UmVxdWVzdCAxIGRlcHRoIDF8IENbU2VydmljZSBDXVxuICBCIC0tPiB8UmVxdWVzdCAyIGRlcHRoIDF8IENcbiAgQSAtLT4gfFJlcXVlc3QgMiBkZXB0aCAwfCBDIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoiZ3JhcGggTFJcblx0QVtTZXJ2aWNlIEFdIC0tPiB8UmVxdWVzdCAxIGRlcHRoIDB8IEJbU2VydmljZSBCXVxuXHRCIC0tPiB8UmVxdWVzdCAxIGRlcHRoIDF8IENbU2VydmljZSBDXVxuICBCIC0tPiB8UmVxdWVzdCAyIGRlcHRoIDF8IENcbiAgQSAtLT4gfFJlcXVlc3QgMiBkZXB0aCAwfCBDIiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifSwidXBkYXRlRWRpdG9yIjpmYWxzZX0)
+
+The `depth` value provides insight into the hierarchy chain of requests. Combining the `uuid` + `depth` + `timestamp` of a request will provide a mapping to the request chain.
+
 ## In-Memory Cache
 
 This plugin uses an in-memory cache that is used to pass the `tracer` information between the server, request and logger.
 
-There is a global TTL per object that is reset on each `get` of the object. 
+There is a global TTL per object that is reset on each `get` of the object.
 
-If an object is stale for the length of the TTL, it will be culled. 
+If an object is stale for the length of the TTL, it will be culled.
 
 There is a max number of keys that can be active at any time to help with memory concerns.
 
