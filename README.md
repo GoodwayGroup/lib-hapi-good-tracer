@@ -35,6 +35,13 @@ await server.register({
         baseRoute: '/debug', // optional defaults to ''
         cache: {
             ttl: 60 // optional defaults to 120 seconds
+        },
+        axios: { // defaults to {}
+            headers: {
+                common: {
+                    'user-agent': 'service-yolo'
+                }
+            }
         }
     }
 });
@@ -67,6 +74,29 @@ await server.register({
 });
 ```
 
+## axios Client Route Hook
+
+Use the exported `addAxiosRoutePreHook` route `pre` hook to attach an `axios` client to your request that will have the trace headers injected. This will allow for chained request tracing.
+
+```js
+const { addAxiosRoutePreHook } = require('@goodwaygroup/lib-hapi-good-tracer');
+
+const routes = [{
+    method: 'GET',
+    path: '/proxy/google',
+    config: {
+        tags: ['proxy'],
+        pre: [ addAxiosRoutePreHook ]
+    },
+    handler: async (request) => {
+        const { axios } = request.pre;
+        return axios.get('https://google.com')
+    }
+}];
+
+exports.routes = server => server.route(routes);
+```
+
 ## Request Chain Hierarchy
 
 Consider The following request chain:
@@ -96,6 +126,7 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 - `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
 - `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
     - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
+- `axios`: defaults to `{}`. Pass in any valid `axios` config options to be passed to the `axiosFactory`.
 - `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
     - `ttl`: default 120 seconds
     - `checkPeriod`: default 5 minutes
