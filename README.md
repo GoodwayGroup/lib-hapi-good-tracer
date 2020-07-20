@@ -76,6 +76,10 @@ await server.register({
 
 ## axios Client Route Hook
 
+There are two options for generating an `axios` client on the `request`. `addAxiosRoutePreHook` and `addAxiosRoutePreHookFactory`.
+
+#### addAxiosRoutePreHook
+
 Use the exported `addAxiosRoutePreHook` route `pre` hook to attach an `axios` client to your request that will have the trace headers injected. This will allow for chained request tracing.
 
 ```js
@@ -91,6 +95,29 @@ const routes = [{
     handler: async (request) => {
         const { axios } = request.pre;
         return axios.get('https://google.com')
+    }
+}];
+
+exports.routes = server => server.route(routes);
+```
+
+#### addAxiosRoutePreHookFactory
+
+Use the exported `addAxiosRoutePreHookFactory` route `pre` hook to attach an `axios` client under a different alias.
+
+```js
+const { addAxiosRoutePreHookFactory } = require('@goodwaygroup/lib-hapi-good-tracer');
+
+const routes = [{
+    method: 'GET',
+    path: '/proxy/google',
+    config: {
+        tags: ['proxy'],
+        pre: [ addAxiosRoutePreHookFactory('tracedAxios') ]
+    },
+    handler: async (request) => {
+        const { tracedAxios } = request.pre;
+        return tracedAxios.get('https://google.com')
     }
 }];
 
