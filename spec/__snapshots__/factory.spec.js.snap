@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`axiosFactory generate boom error on bad repsonse [DEV_EXPOSE_AXIOS_ERRORS enabled] 1`] = `[Error: Request failed with status code 404]`;
-
-exports[`axiosFactory generate boom error on bad repsonse 1`] = `[Error: Request failed with status code 404]`;
