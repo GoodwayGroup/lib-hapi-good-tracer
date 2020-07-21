@@ -83,12 +83,15 @@
     "eslint-config-goodway": "^2.1.1",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "nock": "^13.0.2"
   },
   "dependencies": {
+    "@hapi/boom": "^9.1.0",
     "@hapi/hoek": "^9.0.4",
+    "axios": "^0.19.2",
     "debug": "^4.1.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "node-cache": "^5.1.2",
     "uuid": "^8.2.0"
   }
