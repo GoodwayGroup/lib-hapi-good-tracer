@@ -36,10 +36,12 @@ await server.register({
         cache: {
             ttl: 60 // optional defaults to 120 seconds
         },
-        axios: { // defaults to {}
-            headers: {
-                common: {
-                    'user-agent': 'service-yolo'
+        axios: {
+            main: { // defaults to {}
+                headers: {
+                    common: {
+                        'user-agent': 'service-yolo'
+                    }
                 }
             }
         }
@@ -74,50 +76,54 @@ await server.register({
 });
 ```
 
-## axios Client Route Hook
+## axios Client Route Usage
 
-There are two options for generating an `axios` client on the `request`. `addAxiosRoutePreHook` and `addAxiosRoutePreHookFactory`.
-
-#### addAxiosRoutePreHook
-
-Use the exported `addAxiosRoutePreHook` route `pre` hook to attach an `axios` client to your request that will have the trace headers injected. This will allow for chained request tracing.
+Passing `axios` plugin or route configuration will create Axios instances on the `request`. Use these instances to have the trace headers injected. This will allow for chained request tracing.
 
 ```js
-const { addAxiosRoutePreHook } = require('@goodwaygroup/lib-hapi-good-tracer');
+await server.register({
+    plugin: require('@goodwaygroup/lib-hapi-good-tracer'),
+    options: {
+        axios: {
+            main: {}
+        }
+    }
+});
 
 const routes = [{
     method: 'GET',
     path: '/proxy/google',
     config: {
         tags: ['proxy'],
-        pre: [ addAxiosRoutePreHook ]
     },
     handler: async (request) => {
-        const { axios } = request.pre;
-        return axios.get('https://google.com')
+        const { axios } = request.plugins.goodTracer;
+        return axios.main.get('https://google.com')
     }
 }];
 
 exports.routes = server => server.route(routes);
 ```
 
-#### addAxiosRoutePreHookFactory
-
-Use the exported `addAxiosRoutePreHookFactory` route `pre` hook to attach an `axios` client under a different alias.
+And with Route level configuration
 
 ```js
-const { addAxiosRoutePreHookFactory } = require('@goodwaygroup/lib-hapi-good-tracer');
-
 const routes = [{
     method: 'GET',
     path: '/proxy/google',
     config: {
         tags: ['proxy'],
-        pre: [ addAxiosRoutePreHookFactory('tracedAxios') ]
+        plugins: {
+            goodTracer: {
+                axios: {
+                    inroute: {}
+                }
+            }
+        }
     },
     handler: async (request) => {
-        const { tracedAxios } = request.pre;
-        return tracedAxios.get('https://google.com')
+        const { axios } = request.plugins.goodTracer;
+        return axios.inroute.get('https://google.com')
     }
 }];
 
@@ -153,13 +159,21 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 - `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
 - `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
     - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
-- `axios`: defaults to `{}`. Pass in any valid `axios` config options to be passed to the `axiosFactory`.
+- `axios`: Configured axios instances provided to each request
+    - `[key: string]: (Boolean | Object)`: if given, defaults to `{}`. Pass in any valid `axios` config options.
 - `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
     - `ttl`: default 120 seconds
     - `checkPeriod`: default 5 minutes
     - `maxKeys`: default `5000`
     - `useClones`: default `false`
     - `extendTTLOnGet`: This feature will reset the TTL to the global TTL when a successful `get` occurs. This will extend the life of an item in the cache as a result. default `true`
+
+## Route Configuration Options
+
+> Route level plugin configuration overwrites the options passed to the plugin.
+
+- `axios`: Configured axios instances provided to each request
+    - `[key: string]: (Boolean | Object)`: if given, defaults to `{}`. Pass in any valid `axios` config options.
 
 ## Running Tests
 
