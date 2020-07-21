@@ -1,6 +1,6 @@
 {
   "name": "@goodwaygroup/lib-hapi-good-tracer",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Hapi plugin for injecting tracer info into response headers and logs",
   "main": "index.js",
   "scripts": {

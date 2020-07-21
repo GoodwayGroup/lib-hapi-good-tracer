@@ -2,8 +2,27 @@
 ## [Unreleased]
 
 
-<a name="0.2.0"></a>
-## [0.2.0] - 2020-07-10
+<a name="0.3.0"></a>
+## [0.3.0] - 2020-07-21
+### Chore
+- updated README with expanded documentation
+
+### Features
+- **axios:** Add onPreHandler lifecycle method that provides axios client to request ([#5](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/5))
+
+### Pull Requests
+- Merge pull request [#4](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/4) from GoodwayGroup/release/v0.2.0
+
+
+###### Squashed Commits:
+```
+0.2.0
+```
+
+
+
+<a name="v0.2.0"></a>
+## [v0.2.0] - 2020-07-10
 ### Tech Debt
 - **depth:** rename sequence to dpeth and update readme ([#3](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/3))
 
@@ -23,5 +42,6 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.2.0...HEAD
-[0.2.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.1.0...0.2.0
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.2.0...0.3.0
+[v0.2.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.1.0...v0.2.0
