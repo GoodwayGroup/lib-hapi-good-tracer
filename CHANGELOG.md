@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
-<a name="0.3.0"></a>
-## [0.3.0] - 2020-07-21
+<a name="0.4.0"></a>
+## [0.4.0] - 2020-07-23
+### Bug Fixes
+- **cache:** silence and log cache set errors to avoid nuking a requests ([#8](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/8))
+
+
+<a name="v0.3.0"></a>
+## [v0.3.0] - 2020-07-21
 ### Chore
 - updated README with expanded documentation
 
@@ -42,6 +48,7 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.3.0...HEAD
-[0.3.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.2.0...0.3.0
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.3.0...0.4.0
+[v0.3.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.1.0...v0.2.0
