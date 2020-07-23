@@ -148,6 +148,8 @@ If an object is stale for the length of the TTL, it will be culled.
 
 There is a max number of keys that can be active at any time to help with memory concerns.
 
+The `postResponseCleanup` option is on by default. This will delete the cached data associated with the request on a delay (default of `1000 ms`).  
+
 See [node-cache](https://github.com/node-cache/node-cache) for available settings.
 
 ## Configuration Options
@@ -159,6 +161,8 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 - `enableStatsRoute`: defaults to `false`. Publish a route to `/good-tracer/stats` that exposes the current metrics for [`node-cache` statistics](https://github.com/node-cache/node-cache#statistics-stats).
 - `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
     - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
+- `postResponseCleanup: (Boolean | Object)`: defaults to `true`. If set to anything, the feature is enabled. 
+    - `delay: Number`: defaults to `1000 ms`. The amount of time to wait after reponse to delete a key from the cache.
 - `axios`: Configured axios instances provided to each request
     - `[key: string]: (Boolean | Object)`: if given, defaults to `{}`. Pass in any valid `axios` config options.
 - `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)

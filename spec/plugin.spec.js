@@ -2,6 +2,12 @@ const Hapi = require('@hapi/hapi');
 const { set } = require('lodash');
 const plugin = require('../lib');
 
+function sleep(ms) {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+}
+
 describe('good-tracer plugin', () => {
     let server;
 
@@ -156,5 +162,31 @@ describe('good-tracer plugin', () => {
         expect(result.headers['x-gg-trace-uuid']).toMatch(/\w+-\w+-\w+-\w+-\w+/);
         expect(result.headers['x-gg-trace-depth']).toBeDefined();
         expect(result.headers['x-gg-trace-depth']).toBe(3);
+    });
+
+    it('should automatically delete the cache key after response', async () => {
+        await registerPlugin({
+            enableStatsRoute: true,
+            postResponseCleanup: { delay: 150 }
+        });
+        await server.inject('/');
+        let result = await server.inject('/good-tracer/stats');
+        expect(result.result.keys).toEqual(2);
+        await sleep(200);
+        result = await server.inject('/good-tracer/stats');
+        expect(result.result.keys).toEqual(1);
+    });
+
+    it('should not clean up cache keys on response when postResponseCleanup is false', async () => {
+        await registerPlugin({
+            enableStatsRoute: true,
+            postResponseCleanup: false
+        });
+        await server.inject('/');
+        let result = await server.inject('/good-tracer/stats');
+        expect(result.result.keys).toEqual(2);
+        await sleep(1000);
+        result = await server.inject('/good-tracer/stats');
+        expect(result.result.keys).toEqual(3);
     });
 });
