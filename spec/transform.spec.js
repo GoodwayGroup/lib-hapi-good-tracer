@@ -92,10 +92,6 @@ describe('good-tracer log reporter stream', () => {
                 reporters: logReporters,
                 ops: {
                     interval: 900
-                },
-                includes: {
-                    request: ['headers'],
-                    response: ['headers']
                 }
             }
         });
