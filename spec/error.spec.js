@@ -107,7 +107,6 @@ describe('cache max keys error', () => {
             return get(lp, 'tags[0]', null) === 'error';
         })[0];
         const errLog = JSON.parse(errLogStr);
-        // const errLog = JSON.parse(logLines[2]);
         expect(errLog.tags).toEqual(['error', 'good-tracer', 'cache']);
         expect(errLog.data).toEqual({
             error: 'ECACHEFULL',
