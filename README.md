@@ -34,7 +34,7 @@ await server.register({
         enableStatsRoute: true, // optional defaults to false
         baseRoute: '/debug', // optional defaults to ''
         cache: {
-            ttl: 60 // optional defaults to 120 seconds
+            stdTTL: 60 // optional defaults to 3600 seconds
         },
         axios: {
             main: { // defaults to {}
@@ -162,13 +162,13 @@ See [node-cache](https://github.com/node-cache/node-cache) for available setting
 - `baseRoute`: defaults to `''`. Prepends to the `/good-tracer/stats` route.
     - Example: `baseRoute = /serivce-awesome` results in `/serivce-awesome/good-tracer/stats`
 - `postResponseCleanup: (Boolean | Object)`: defaults to `true`. If set to anything, the feature is enabled. 
-    - `delay: Number`: defaults to `1000 ms`. The amount of time to wait after reponse to delete a key from the cache.
+    - `delay: Number`: defaults to `1` second. The amount of time to wait after reponse to delete a key from the cache. You can pass decimal values for sub-second times.
 - `axios`: Configured axios instances provided to each request
     - `[key: string]: (Boolean | Object)`: if given, defaults to `{}`. Pass in any valid `axios` config options.
-- `cache`: internal memory cache settings. See [node-cache](https://github.com/node-cache/node-cache)
-    - `ttl`: default 120 seconds
-    - `checkPeriod`: default 5 minutes
-    - `maxKeys`: default `5000`
+- `cache`: internal memory cache settings. See [node-cache configuration](https://github.com/node-cache/node-cache#options)
+    - `stdTTL`: default `3600` seconds (1 hour)
+    - `checkperiod`: default `60` seconds
+    - `maxKeys`: default `-1` (no limit)
     - `useClones`: default `false`
     - `extendTTLOnGet`: This feature will reset the TTL to the global TTL when a successful `get` occurs. This will extend the life of an item in the cache as a result. default `true`
 

@@ -167,12 +167,15 @@ describe('good-tracer plugin', () => {
     it('should automatically delete the cache key after response', async () => {
         await registerPlugin({
             enableStatsRoute: true,
-            postResponseCleanup: { delay: 150 }
+            cache: {
+                checkperiod: 0.1
+            },
+            postResponseCleanup: { delay: 0.5 }
         });
         await server.inject('/');
         let result = await server.inject('/good-tracer/stats');
         expect(result.result.keys).toEqual(2);
-        await sleep(200);
+        await sleep(1000);
         result = await server.inject('/good-tracer/stats');
         expect(result.result.keys).toEqual(1);
     });
