@@ -2,8 +2,14 @@
 ## [Unreleased]
 
 
-<a name="0.4.0"></a>
-## [0.4.0] - 2020-07-23
+<a name="0.4.1"></a>
+## [0.4.1] - 2020-07-24
+### Tech Debt
+- **cache:** adjusted default settings. Fixed bug with ttl setting. Deprecated orphaned callback in favor of node-cache TTL expiry ([#9](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/9))
+
+
+<a name="v0.4.0"></a>
+## [v0.4.0] - 2020-07-23
 ### Bug Fixes
 - **cache:** silence and log cache set errors to avoid nuking a requests ([#8](https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues/8))
 
@@ -48,7 +54,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.4.0...HEAD
-[0.4.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.3.0...0.4.0
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.4.0...0.4.1
+[v0.4.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/GoodwayGroup/lib-hapi-trace-headers/compare/v0.1.0...v0.2.0
