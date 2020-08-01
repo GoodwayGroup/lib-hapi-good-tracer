@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GoodwayGroup/lib-hapi-trace-headers.git"
+    "url": "git+https://github.com/GoodwayGroup/lib-hapi-good-tracer.git"
   },
   "author": "https://www.npmjs.com/~clok",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GoodwayGroup/lib-hapi-trace-headers/issues"
+    "url": "https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues"
   },
-  "homepage": "https://github.com/GoodwayGroup/lib-hapi-trace-headers#readme",
+  "homepage": "https://github.com/GoodwayGroup/lib-hapi-good-tracer#readme",
   "keywords": [
     "hapi",
     "metrics",
