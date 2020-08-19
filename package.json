@@ -77,22 +77,22 @@
   "devDependencies": {
     "@hapi/good": "^9.0.0",
     "@hapi/good-squeeze": "^6.0.0",
-    "@hapi/hapi": "^19.1.1",
+    "@hapi/hapi": "^20.0.0",
     "cross-env": "^7.0.2",
-    "eslint": "^7.3.1",
+    "eslint": "^7.7.0",
     "eslint-config-goodway": "^2.1.1",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
-    "jest": "^26.1.0",
-    "nock": "^13.0.2"
+    "jest": "^26.4.0",
+    "nock": "^13.0.4"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.0",
     "@hapi/hoek": "^9.0.4",
     "axios": "^0.19.2",
     "debug": "^4.1.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "node-cache": "^5.1.2",
-    "uuid": "^8.2.0"
+    "uuid": "^8.3.0"
   }
 }
