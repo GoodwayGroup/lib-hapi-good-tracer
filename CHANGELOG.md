@@ -2,8 +2,18 @@
 ## [Unreleased]
 
 
-<a name="0.4.2"></a>
-## [0.4.2] - 2020-08-01
+<a name="v0.4.3"></a>
+## [v0.4.3] - 2020-08-19
+### Chore
+- add v to version name when updating changelog
+- **dependabot:** update PR count
+- **dependabot:** adjust PR limit
+- **dependabot:** add config file
+- **deps:** update dependencies ([#17](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/17))
+
+
+<a name="v0.4.2"></a>
+## [v0.4.2] - 2020-08-02
 ### Docs
 - correct repo url ([#10](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/10))
 
@@ -60,8 +70,9 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/0.4.2...HEAD
-[0.4.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.1...0.4.2
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.3...HEAD
+[v0.4.3]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.2...v0.4.3
+[v0.4.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.1...v0.4.2
 [v0.4.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.3.0...v0.4.0
 [v0.3.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.2.0...v0.3.0
