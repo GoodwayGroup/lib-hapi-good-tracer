@@ -10,7 +10,7 @@
     "test:results": "open ./coverage/lcov-report/index.html",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "version": "git-chglog -o CHANGELOG.md --next-tag $(grep '\\\"version\\\":' package.json | grep -v git-chglog | awk -F '\\\"' '{print $4}') && git add CHANGELOG.md"
+    "version": "git-chglog -o CHANGELOG.md --next-tag v$(grep '\\\"version\\\":' package.json | grep -v git-chglog | awk -F '\\\"' '{print $4}') && git add CHANGELOG.md"
   },
   "repository": {
     "type": "git",
