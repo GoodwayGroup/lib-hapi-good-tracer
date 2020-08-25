@@ -2,6 +2,22 @@
 ## [Unreleased]
 
 
+<a name="v0.4.4"></a>
+## [v0.4.4] - 2020-08-25
+### Bug Fixes
+- **deps:** update dependency axios to v0.20.0 ([#24](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/24))
+- **deps:** pin dependencies ([#22](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/22))
+
+### Chore
+- update README
+- remove dependabot
+- **deps:** update dependency jest to v26.4.2 ([#23](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/23))
+- **renovate:** add config ([#21](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/21))
+
+### Set
+- theme jekyll-theme-hacker
+
+
 <a name="v0.4.3"></a>
 ## [v0.4.3] - 2020-08-19
 ### Chore
@@ -70,7 +86,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.3...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.4...HEAD
+[v0.4.4]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.3...v0.4.4
 [v0.4.3]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.2...v0.4.3
 [v0.4.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.1...v0.4.2
 [v0.4.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.0...v0.4.1
