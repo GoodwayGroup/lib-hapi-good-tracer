@@ -1,6 +1,9 @@
 # lib-hapi-good-tracer
 
-[![Coverage Status](https://coveralls.io/repos/github/GoodwayGroup/lib-hapi-good-tracer/badge.svg?branch=master)](https://coveralls.io/github/GoodwayGroup/lib-hapi-good-tracer?branch=master) [![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
+[![CircleCI](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer.svg?style=svg)](https://circleci.com/gh/GoodwayGroup/lib-hapi-good-tracer)
+[![Coverage Status](https://coveralls.io/repos/github/GoodwayGroup/lib-hapi-good-tracer/badge.svg?branch=master)](https://coveralls.io/github/GoodwayGroup/lib-hapi-good-tracer?branch=master)
+[![npm downloads](https://img.shields.io/npm/dm/@goodwaygroup/lib-hapi-good-tracer.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@goodwaygroup/lib-hapi-good-tracer)
+[![install size](https://packagephobia.com/badge?p=@goodwaygroup/lib-hapi-good-tracer)](https://packagephobia.com/result?p=@goodwaygroup/lib-hapi-good-tracer)
 
 ## Usage
 
