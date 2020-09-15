@@ -2,6 +2,20 @@
 ## [Unreleased]
 
 
+<a name="v0.4.5"></a>
+## [v0.4.5] - 2020-09-14
+### Bug Fixes
+- **deps:** update dependency [@hapi](https://github.com/hapi)/hoek to v9.1.0 ([#26](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/26))
+
+### Chore
+- **deps:** update dependency eslint to v7.9.0 ([#28](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/28))
+- **deps:** update dependency husky to v4.3.0 ([#27](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/27))
+- **deps:** update dependency eslint to v7.8.1 ([#25](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/25))
+
+### Set
+- theme jekyll-theme-cayman
+
+
 <a name="v0.4.4"></a>
 ## [v0.4.4] - 2020-08-25
 ### Bug Fixes
@@ -86,7 +100,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.4...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.5...HEAD
+[v0.4.5]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.4...v0.4.5
 [v0.4.4]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.3...v0.4.4
 [v0.4.3]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.2...v0.4.3
 [v0.4.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.1...v0.4.2
