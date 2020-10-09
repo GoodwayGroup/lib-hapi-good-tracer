@@ -79,7 +79,7 @@
     "@hapi/good-squeeze": "6.0.0",
     "@hapi/hapi": "20.0.0",
     "cross-env": "7.0.2",
-    "eslint": "7.9.0",
+    "eslint": "7.11.0",
     "eslint-config-goodway": "2.1.1",
     "eslint-plugin-import": "2.22.0",
     "husky": "4.3.0",
