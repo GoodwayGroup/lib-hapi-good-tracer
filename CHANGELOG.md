@@ -2,6 +2,22 @@
 ## [Unreleased]
 
 
+<a name="v0.4.6"></a>
+## [v0.4.6] - 2020-10-20
+### Bug Fixes
+- **deps:** update dependency debug to v4.2.0 ([#30](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/30))
+- **deps:** update dependency uuid to v8.3.1 ([#34](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/34))
+
+### Chore
+- **deps:** update dependency eslint-config-goodway to v3
+- **deps:** update dependency jest to v26.6.0 ([#37](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/37))
+- **deps:** update node.js to v12.19.0 ([#29](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/29))
+- **deps:** update hapijs monorepo ([#31](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/31))
+- **deps:** update dependency eslint to v7.11.0 ([#32](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/32))
+- **deps:** update dependency eslint-plugin-import to v2.22.1 ([#33](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/33))
+- **deps:** update dependency jest to v26.5.3 ([#35](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/35))
+
+
 <a name="v0.4.5"></a>
 ## [v0.4.5] - 2020-09-14
 ### Bug Fixes
@@ -100,7 +116,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.5...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.6...HEAD
+[v0.4.6]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.5...v0.4.6
 [v0.4.5]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.4...v0.4.5
 [v0.4.4]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.3...v0.4.4
 [v0.4.3]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.2...v0.4.3
