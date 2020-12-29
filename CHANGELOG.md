@@ -2,6 +2,17 @@
 ## [Unreleased]
 
 
+<a name="v0.5.1"></a>
+## [v0.5.1] - 2020-12-29
+### Bug Fixes
+- **deps:** update dependency [@hapi](https://github.com/hapi)/hoek to v9.1.1 ([#54](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/54))
+- **deps:** update dependency axios to v0.21.1 ([#53](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/53))
+- **deps:** update dependency [@hapi](https://github.com/hapi)/boom to v9.1.1 ([#51](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/51))
+
+### Chore
+- **deps:** update dependency eslint to v7.16.0 ([#52](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/52))
+
+
 <a name="v0.5.0"></a>
 ## [v0.5.0] - 2020-12-15
 ### Bug Fixes
@@ -138,7 +149,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...HEAD
+[v0.5.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.0...v0.5.1
 [v0.5.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.6...v0.5.0
 [v0.4.6]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.5...v0.4.6
 [v0.4.5]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.4...v0.4.5
