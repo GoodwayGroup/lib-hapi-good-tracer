@@ -2,6 +2,29 @@
 ## [Unreleased]
 
 
+<a name="v0.5.2"></a>
+## [v0.5.2] - 2021-03-08
+### Bug Fixes
+- **deps:** update dependency lodash to v4.17.21 ([#67](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/67))
+
+### Chore
+- **deps:** update dependency eslint to v7.17.0 ([#55](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/55))
+- **deps:** update dependency nock to v13.0.11 ([#72](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/72))
+- **deps:** update dependency node-notifier to 8.0.1 [security] ([#73](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/73))
+- **deps:** update dependency eslint-config-goodway to v3.1.1 ([#71](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/71))
+- **deps:** update dependency nock to v13.0.9 ([#63](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/63))
+- **deps:** update dependency [@hapi](https://github.com/hapi)/hapi to v20.1.0 ([#62](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/62))
+- **deps:** update dependency eslint-config-goodway to v3.1.0 ([#69](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/69))
+- **deps:** update dependency eslint to v7.21.0 ([#64](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/64))
+- **deps:** update node.js to v14
+- **deps:** update dependency nock to v13.0.6 ([#60](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/60))
+- **deps:** update dependency husky to v4.3.8 ([#59](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/59))
+- **deps:** update dependency eslint to v7.18.0 ([#58](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/58))
+- **deps:** update dependency husky to v4.3.7 ([#57](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/57))
+- **deps:** update node.js to v12.20.1 ([#56](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/56))
+- **github action:** add Publish action
+
+
 <a name="v0.5.1"></a>
 ## [v0.5.1] - 2020-12-29
 ### Bug Fixes
@@ -149,7 +172,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...HEAD
+[v0.5.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...v0.5.2
 [v0.5.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.0...v0.5.1
 [v0.5.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.6...v0.5.0
 [v0.4.6]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.5...v0.4.6
