@@ -84,7 +84,7 @@
     "eslint-plugin-import": "2.22.1",
     "husky": "4.3.8",
     "jest": "26.6.3",
-    "nock": "13.0.9"
+    "nock": "13.0.11"
   },
   "dependencies": {
     "@hapi/boom": "9.1.1",
