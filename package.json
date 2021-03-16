@@ -77,17 +77,17 @@
   "devDependencies": {
     "@hapi/good": "9.0.1",
     "@hapi/good-squeeze": "6.0.0",
-    "@hapi/hapi": "20.1.0",
+    "@hapi/hapi": "20.1.1",
     "cross-env": "7.0.3",
-    "eslint": "7.21.0",
-    "eslint-config-goodway": "3.1.1",
+    "eslint": "7.22.0",
+    "eslint-config-goodway": "3.1.2",
     "eslint-plugin-import": "2.22.1",
     "husky": "4.3.8",
     "jest": "26.6.3",
     "nock": "13.0.11"
   },
   "dependencies": {
-    "@hapi/boom": "9.1.1",
+    "@hapi/boom": "9.1.2",
     "@hapi/hoek": "9.1.1",
     "axios": "0.21.1",
     "debug": "4.3.1",
