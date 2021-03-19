@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v0.6.0"></a>
+## [v0.6.0] - 2021-03-19
+### Bug Fixes
+- **deps:** update all non-major dependencies ([#76](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/76))
+- **github action:** do not run publish on any branches
+
+### Chore
+- **deps:** update dependency husky to v5
+
+### Features
+- **cd:** add push button release via github actions
+
+
 <a name="v0.5.2"></a>
 ## [v0.5.2] - 2021-03-08
 ### Bug Fixes
@@ -172,7 +185,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.0...HEAD
+[v0.6.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...v0.6.0
 [v0.5.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...v0.5.2
 [v0.5.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.0...v0.5.1
 [v0.5.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.4.6...v0.5.0
