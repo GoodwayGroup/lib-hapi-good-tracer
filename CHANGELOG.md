@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v0.6.1"></a>
+## [v0.6.1] - 2021-03-31
+### Chore
+- **deps:** update dependency eslint to v7.23.0 ([#79](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/79))
+- **deps:** update dependency husky to v6 ([#80](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/80))
+- **deps:** update dependency y18n to 4.0.1 [security] ([#81](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/81))
+- **deps:** update dependency husky to v5.2.0 ([#78](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/78))
+- **deps:** update all non-major dependencies ([#77](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/77))
+
+
 <a name="v0.6.0"></a>
 ## [v0.6.0] - 2021-03-19
 ### Bug Fixes
@@ -185,7 +195,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.1...HEAD
+[v0.6.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...v0.6.0
 [v0.5.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...v0.5.2
 [v0.5.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.0...v0.5.1
