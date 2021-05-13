@@ -2,6 +2,17 @@
 ## [Unreleased]
 
 
+<a name="v0.6.2"></a>
+## [v0.6.2] - 2021-05-13
+### Bug Fixes
+- **deps:** update dependency [@hapi](https://github.com/hapi)/hoek to v9.2.0 ([#83](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/83))
+
+### Chore
+- **deps:** update all non-major dependencies ([#84](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/84))
+- **deps:** update dependency hosted-git-info to 2.8.9 [security] ([#86](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/86))
+- **deps:** update all non-major dependencies ([#82](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/82))
+
+
 <a name="v0.6.1"></a>
 ## [v0.6.1] - 2021-03-31
 ### Chore
@@ -195,7 +206,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.1...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.2...HEAD
+[v0.6.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.1...v0.6.2
 [v0.6.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...v0.6.0
 [v0.5.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.1...v0.5.2
