@@ -25,7 +25,7 @@ describe('factory', () => {
         expect(ret.data).toBe('success');
     });
 
-    it('generate boom error on bad repsonse', async (done) => {
+    it('generate boom error on bad response', async () => {
         const client = factory({ headers: { common: { 'user-agent': 'test-mctestings' } } });
 
         nock('http://test.com')
@@ -33,16 +33,14 @@ describe('factory', () => {
             .reply(404, 'nope');
 
         try {
-            await client.get('http://test.com/test');
-            done.fail();
+            expect(await client.get('http://test.com/test')).toThrow();
         } catch (e) {
             expect(e.message).toBe('Request failed with status code 404');
             expect(e).toMatchSnapshot();
-            done();
         }
     });
 
-    it('generate boom error on bad repsonse [DEV_EXPOSE_AXIOS_ERRORS enabled]', async (done) => {
+    it('generate boom error on bad response [DEV_EXPOSE_AXIOS_ERRORS enabled]', async () => {
         process.env.DEV_EXPOSE_AXIOS_ERRORS = true;
         const client = factory();
 
@@ -51,31 +49,30 @@ describe('factory', () => {
             .reply(404, 'nope');
 
         try {
-            await client.get('http://test.com/test');
-            done.fail();
+            expect(await client.get('http://test.com/test')).toThrow();
         } catch (e) {
             expect(e.message).toBe('Request failed with status code 404');
             expect(e).toMatchSnapshot();
-            done();
         }
         delete process.env.DEV_EXPOSE_AXIOS_ERRORS;
     });
 });
 
 describe('handleError', () => {
-    it('should inject a place holder getHeaders stub if none is found', (done) => {
+    it('should inject a place holder getHeaders stub if none is found', () => {
         try {
-            handleError(new Boom.Boom('i made an error', {
-                decorate: {
-                    response: {
-                        data: {
-                            message: 'a deeper meaning',
-                            nested: 'data'
+            expect(
+                handleError(new Boom.Boom('i made an error', {
+                    decorate: {
+                        response: {
+                            data: {
+                                message: 'a deeper meaning',
+                                nested: 'data'
+                            }
                         }
                     }
-                }
-            }));
-            done.fail();
+                }))
+            ).toThrow();
         } catch (e) {
             expect(e.message).toBe('i made an error');
             expect(e.output.statusCode).toBe(500);
@@ -84,28 +81,28 @@ describe('handleError', () => {
                 nested: 'data'
             });
             expect(e.data.requestHeaders).toBe('');
-            done();
         }
     });
 
-    it('add extra data when DEV_EXPOSE_AXIOS_ERRORS is enabled', (done) => {
+    it('add extra data when DEV_EXPOSE_AXIOS_ERRORS is enabled', () => {
         process.env.DEV_EXPOSE_AXIOS_ERRORS = true;
         try {
-            handleError(new Boom.Boom('i made an error', {
-                decorate: {
-                    response: {
-                        status: 410,
-                        data: {
-                            message: 'a deeper meaning',
-                            nested: 'data'
-                        },
-                        request: {
-                            getHeaders: () => ({ stuff: 'things' })
+            expect(
+                handleError(new Boom.Boom('i made an error', {
+                    decorate: {
+                        response: {
+                            status: 410,
+                            data: {
+                                message: 'a deeper meaning',
+                                nested: 'data'
+                            },
+                            request: {
+                                getHeaders: () => ({ stuff: 'things' })
+                            }
                         }
                     }
-                }
-            }));
-            done.fail();
+                }))
+            ).toThrow();
         } catch (e) {
             expect(e.message).toBe('a deeper meaning: i made an error');
             expect(e.output.statusCode).toBe(410);
@@ -114,7 +111,6 @@ describe('handleError', () => {
                 nested: 'data'
             });
             expect(e.data.requestHeaders).toEqual({ stuff: 'things' });
-            done();
         }
         delete process.env.DEV_EXPOSE_AXIOS_ERRORS;
     });
