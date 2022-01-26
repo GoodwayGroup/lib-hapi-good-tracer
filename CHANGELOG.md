@@ -2,6 +2,20 @@
 ## [Unreleased]
 
 
+<a name="v0.6.3"></a>
+## [v0.6.3] - 2022-01-26
+### Bug Fixes
+- **deps:** update all non-major dependencies ([#101](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/101))
+- **deps:** update all non-major dependencies ([#92](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/92))
+
+### Chore
+- **deps:** updated axios to v0.25.0 and other npm audits ([#100](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/100))
+- **deps:** update dependency husky to v7 ([#93](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/93))
+- **deps:** update all non-major dependencies ([#88](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/88))
+- **deps:** update dependency jest to v27
+- **deps:** update all non-major dependencies ([#87](https://github.com/GoodwayGroup/lib-hapi-good-tracer/issues/87))
+
+
 <a name="v0.6.2"></a>
 ## [v0.6.2] - 2021-05-13
 ### Bug Fixes
@@ -206,7 +220,8 @@
 - **coverage:** add coveralls
 
 
-[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.2...HEAD
+[Unreleased]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.3...HEAD
+[v0.6.3]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.2...v0.6.3
 [v0.6.2]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.1...v0.6.2
 [v0.6.1]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.6.0...v0.6.1
 [v0.6.0]: https://github.com/GoodwayGroup/lib-hapi-good-tracer/compare/v0.5.2...v0.6.0
